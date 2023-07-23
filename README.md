@@ -25,7 +25,7 @@ NetJS.getGistsAsync('3f1cd831af032e52238ef161bdd715b3', result => {})
 let pastebin_id = '5fZP6aeu'
 let gists_id = 'f16d2ee987a35d8930b35971c2d47d72'
 
-BlockEvents.rightClicked(event => { // Gists example
+onEvent('block.right_click',event => { // Gists example
     if (event.hand == 'main_hand') {
         NetJS.getGistsAsync(gists_id, result => { // gists_id must be only id, not url!
             if (result.success) {
@@ -59,7 +59,7 @@ BlockEvents.rightClicked(event => { // Gists example
     }
 })
 
-BlockEvents.leftClicked(event => { // PasteBin example
+onEvent('block.left_click',event => { // PasteBin example
     NetJS.getPasteBinAsync(pastebin_id, result => { // pastebin_id must be only id, not url!
         if (result.success) {
             // Be sure to check that the request is successful.
