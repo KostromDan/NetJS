@@ -6,7 +6,7 @@ import dev.latvian.mods.kubejs.script.BindingsEvent;
 
 public class NetJSPlugin extends KubeJSPlugin {
 	@Override
-	public void registerBindings(BindingsEvent event) {
+	public void addBindings(BindingsEvent event) {
 		event.add("NetJS", NetJSWrapper.class);
 	}
 }
