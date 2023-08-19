@@ -97,7 +97,7 @@ public class PasteBinMetaDataTask extends AbstractNetJSTask {
 			Element dislikes = elems.getElementsByClass("btn -small -dislike").first();
 			result.put("dislikes_count", dislikes != null ? Integer.parseInt(dislikes.text().replaceAll(",| ", "")) : null);
 		}catch (Exception e){
-			ConsoleJS.SERVER.log("Error while parsing additional prams from pastebin:");
+			ConsoleJS.SERVER.log("Error while parsing additional prams from pastebin, this shouldn't happen, report to NetJS authors:");
 			e.printStackTrace();
 			exception(e);
 			return;
