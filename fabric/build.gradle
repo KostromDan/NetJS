@@ -32,9 +32,9 @@ dependencies {
 	shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
 
 	modImplementation("dev.latvian.mods:kubejs-fabric:${rootProject.kubejs_version}")
-	implementation("org.jsoup:jsoup:1.16.1")
+	implementation("org.jsoup:jsoup:${jsoup_version}")
 	loom {
-		include("org.jsoup:jsoup:1.16.1")
+		include("org.jsoup:jsoup:${jsoup_version}")
 	}
 }
 
