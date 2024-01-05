@@ -25,9 +25,9 @@ dependencies {
 	shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
 
 	modImplementation("dev.latvian.mods:kubejs-forge:${rootProject.kubejs_version}")
-	forgeRuntimeLibrary("org.jsoup:jsoup:1.16.1")
+	forgeRuntimeLibrary("org.jsoup:jsoup:${jsoup_version}")
 	loom {
-		include("org.jsoup:jsoup:1.16.1")
+		include("org.jsoup:jsoup:${jsoup_version}")
 	}
 }
 
