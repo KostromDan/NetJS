@@ -10,6 +10,9 @@ dependencies {
 	modApi "dev.architectury:architectury:${rootProject.architectury_version}"
 	modImplementation("dev.latvian.mods:kubejs:${kubejs_version}")
 	implementation("org.jsoup:jsoup:${jsoup_version}")
+
+	// MixinExtras
+	implementation(annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-fabric:${rootProject.mixin_extras}"))
 }
 
 publishing {

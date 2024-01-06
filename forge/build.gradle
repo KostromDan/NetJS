@@ -16,8 +16,17 @@ configurations {
 	developmentForge.extendsFrom common
 }
 
+repositories {
+	maven {
+		url "https://maven.blamejared.com"
+		content {
+			includeGroup "com.faux.ingredientextension"
+		}
+	}
+}
+
 dependencies {
-	forge "net.minecraftforge:forge:${rootProject.forge_version}"
+	forge "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 	// Remove the next line if you don't want to depend on the API
 	modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
 
@@ -29,6 +38,8 @@ dependencies {
 	loom {
 		include("org.jsoup:jsoup:${jsoup_version}")
 	}
+	implementation(annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-common:${mixin_extras}"))
+	implementation(include("com.github.llamalad7.mixinextras:mixinextras-forge:${mixin_extras}"))
 }
 
 processResources {

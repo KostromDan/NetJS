@@ -16,6 +16,15 @@ configurations {
 	developmentFabric.extendsFrom common
 }
 
+repositories {
+	maven {
+		url "https://maven.blamejared.com"
+		content {
+			includeGroup "com.faux.ingredientextension"
+		}
+	}
+}
+
 configurations.configureEach {
 	resolutionStrategy {
 		force "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
@@ -23,8 +32,9 @@ configurations.configureEach {
 }
 
 dependencies {
-	modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
-	modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
+	// Loader Dependencies
+	modApi "net.fabricmc:fabric-loader:${fabric_loader_version}"
+	modApi "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}+${minecraft_version}"
 	// Remove the next line if you don't want to depend on the API
 	modApi "dev.architectury:architectury-fabric:${rootProject.architectury_version}"
 
@@ -36,6 +46,10 @@ dependencies {
 	loom {
 		include("org.jsoup:jsoup:${jsoup_version}")
 	}
+
+	// MixinExtras
+	include(implementation(annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-fabric:${mixin_extras}")))
+
 }
 
 processResources {

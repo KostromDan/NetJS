@@ -58,6 +58,14 @@ allprojects {
 				includeGroup "dev.latvian.mods"
 			}
 		}
+		// jitpack (mixinextras only)
+		maven {
+			// location of mixinextras
+			url "https://jitpack.io"
+			content {
+				includeGroup "com.github.llamalad7.mixinextras"
+			}
+		}
 	}
 
 	tasks.withType(JavaCompile) {
