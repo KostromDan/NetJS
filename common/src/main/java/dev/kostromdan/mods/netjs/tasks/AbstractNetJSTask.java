@@ -9,13 +9,13 @@ public abstract class AbstractNetJSTask implements Runnable {
 	public NetJSResultMap<String, Object> result;
 	protected NetJSICallback callback = null;
 
-	private boolean is_subtask() {
-		return this.getClass().getPackage().toString().endsWith(".subtasks");
-	}
-
 	public AbstractNetJSTask(String id) {
 		result = new NetJSResultMap<String, Object>(this.getClass());
 		this.id = id;
+	}
+
+	private boolean is_subtask() {
+		return this.getClass().getPackage().toString().endsWith(".subtasks");
 	}
 
 	public void callback() {
@@ -26,7 +26,6 @@ public abstract class AbstractNetJSTask implements Runnable {
 			callback.onCallback(result);
 		} catch (Throwable ex) {
 			ConsoleJS.SERVER.error("Error occurred while handling NetJS callback: " + ex.getMessage());
-			ex.printStackTrace();
 		}
 	}
 
@@ -39,6 +38,7 @@ public abstract class AbstractNetJSTask implements Runnable {
 		result.put("success", false);
 		result.put("exception", err);
 		callback();
+		err.printStackTrace();
 	}
 
 	public boolean isSuccess() {
