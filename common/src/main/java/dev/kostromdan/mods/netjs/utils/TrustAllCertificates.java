@@ -31,8 +31,8 @@ public class TrustAllCertificates {
 		};
 
 		HostnameVerifier trustAllHostnames = (hostname, session) -> {
-            return true; // Just allow them all.
-        };
+			return true; // Just allow them all.
+		};
 
 		try {
 			System.setProperty("jsse.enableSNIExtension", "false");
