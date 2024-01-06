@@ -3,7 +3,6 @@ package dev.kostromdan.mods.netjs.utils;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 import java.security.GeneralSecurityException;
@@ -31,12 +30,9 @@ public class TrustAllCertificates {
 				}
 		};
 
-		HostnameVerifier trustAllHostnames = new HostnameVerifier() {
-			@Override
-			public boolean verify(String hostname, SSLSession session) {
-				return true; // Just allow them all.
-			}
-		};
+		HostnameVerifier trustAllHostnames = (hostname, session) -> {
+            return true; // Just allow them all.
+        };
 
 		try {
 			System.setProperty("jsse.enableSNIExtension", "false");
