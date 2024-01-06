@@ -11,6 +11,7 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
+
 public class PasteBinMetaDataTask extends AbstractNetJSTask {
 
 
@@ -96,7 +97,7 @@ public class PasteBinMetaDataTask extends AbstractNetJSTask {
 			result.put("likes_count", likes != null ? Integer.parseInt(likes.text().replaceAll(",| ", "")) : null);
 			Element dislikes = elems.getElementsByClass("btn -small -dislike").first();
 			result.put("dislikes_count", dislikes != null ? Integer.parseInt(dislikes.text().replaceAll(",| ", "")) : null);
-		}catch (Exception e){
+		} catch (Exception e) {
 			ConsoleJS.SERVER.log("Error while parsing additional prams from pastebin, this shouldn't happen, report to NetJS authors:");
 			e.printStackTrace();
 			exception(e);
